@@ -1,0 +1,26 @@
+library(ggplot2)
+library(tidyverse)
+library(readxl)
+library(scales)
+library(extrafont)
+
+
+df <- read_excel("Desktop/screening test.xlsx")
+
+p<-ggplot(df, aes(x=`Survival rate (%)`, y=Condition, color=Condition)) + coord_flip() +
+  geom_bar(stat="identity", color="cadetblue", fill="cadetblue", width = 0.8, position = position_dodge(0.8)) + labs(title = "siRNA cytotoxicity of A549 cells", subtitle = "1000 c/w for 96 hours", tag = "A") + 
+  theme(
+    text = element_text(family="Helvetica", size=12, color="grey33"),
+    axis.title.x = element_text(size=12, 
+                                color="grey27", 
+                                face="bold", margin = unit(c(3, 0, 0, 0), "mm")),
+    axis.title.y = element_text(size=12, 
+                                color="grey27", 
+                                face="bold", margin = unit(c(0, 3, 0, 0), "mm")),
+    axis.text.x = element_text(size=10,
+                               colour="grey 10"),
+    axis.text.y = element_text(size=11,
+                               colour="grey 10"),
+    plot.title = element_text(face="bold"),
+    plot.tag = element_text(size=25, color="grey25", face="bold")
+  )
