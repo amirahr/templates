@@ -5,12 +5,12 @@ library(scales)
 library(extrafont)
 
 
-df <- read_excel("Desktop/screening test.xlsx")
+df <- read_excel("Desktop/biano.xlsx")
 
 df$Condition <- factor(df$Condition, levels = df$Condition)
 
 p<-ggplot(df, aes(x=`Survival rate (%)`, y=Condition, fill=Group)) + coord_flip() +
-  geom_bar(stat="identity", width = 0.8, position = position_dodge(0.8)) + scale_fill_manual(values=c("#595959", "#b2d8d8","#66b2b2", "#008080", "#006666")) + labs(title = "siRNA cytotoxicity of A549 cells", subtitle = "1000 c/w for 96 hours", tag = "A") + 
+  geom_bar(stat="identity", width = 0.8, position = position_dodge(0.8)) + scale_fill_manual(values=c("#595959", "#b2d8d8","#66b2b2", "#008080", "#006666", "#003434")) + labs(title = "siRNA cytotoxicity of A549 cells, n=2", subtitle = "1000 c/w for 120 hours, normalised to non-template control", tag = "C") + 
   theme(
     text = element_text(family="Helvetica", size=12, color="grey33"),
     axis.title.x = element_text(size=12, 
